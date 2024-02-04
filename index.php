@@ -67,3 +67,16 @@ function DNA_strand($dna) {
 // function DNA_strand($dna) {
 //   return strtr($dna, ['A'=>'T', 'T'=>'A', 'C'=>'G', 'G'=>'C']);
 // }
+
+
+function nbYear($p0, $percent, $aug, $p) {
+  $year = 0;
+  $people = $p0;
+  do {
+    $people += floor($people*$percent/100 + $aug);
+    $year++ ;
+  } while ($people < $p);
+  return $year;
+}
+
+// echo nbYear(1500000, 2.5, 10000, 2000000);
