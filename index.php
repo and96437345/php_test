@@ -20,9 +20,27 @@ function XO($s) {
   }
     return $res;
   }
-  echo XO($string);
+  // echo XO($string);
 
 //   function XO($s) {
 //     $lower = strtolower($s);
 //     return substr_count($lower, 'x') === substr_count($lower, 'o');
 //   }
+
+$text = 'aaaxbbbbyyhwawiwjjjwwm';
+function printerError($s) {
+  $noColor = 'nopqrstuvwxyz';
+  $counter = 0;
+  for ($i=0; $i < 13; $i++) {
+    $counter += substr_count($s, $noColor[$i]);
+  }
+  return $counter.'/'.strlen($s);
+}
+// echo printerError('aaaxbbbbyyhwawiwjjjwwm');
+
+// function printerError($s) {
+//   $errorCount = strlen(str_replace(range('a','m'), '', $s));
+//   $totalCount = strlen($s);
+  
+//   return $errorCount.'/'.$totalCount;
+// }
