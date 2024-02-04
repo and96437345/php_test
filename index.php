@@ -80,3 +80,13 @@ function nbYear($p0, $percent, $aug, $p) {
 }
 
 // echo nbYear(1500000, 2.5, 10000, 2000000);
+
+echo isSquare(-1);
+
+function isSquare($n){
+  return (sqrt($n) == floor(sqrt($n)) ? true : false);
+  // if (sqrt($n) == floor(sqrt($n))) {
+  //   return true;
+  // };
+  // return false;
+}
