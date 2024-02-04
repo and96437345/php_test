@@ -44,3 +44,26 @@ function printerError($s) {
   
 //   return $errorCount.'/'.$totalCount;
 // }
+
+function DNA_strand($dna) {
+  for ($i=0; $i < strlen($dna); $i++) {
+    if ($dna[$i] == 'A' || $dna[$i] == 'T') {
+      if($dna[$i] == 'A') $dna[$i] = 'T';
+      else $dna[$i] = 'A';   
+    }
+    if ($dna[$i] == 'C' || $dna[$i] == 'G') {
+      if($dna[$i] == 'C') $dna[$i] = 'G';
+      else $dna[$i] = 'C';   
+    }
+  }
+  return $dna;
+}
+// echo DNA_strand('ATTGC');
+// echo DNA_strand('GTAT');
+
+// function DNA_strand($dna) {
+//   return strtr($dna, 'ACGT', 'TGCA');
+// }
+// function DNA_strand($dna) {
+//   return strtr($dna, ['A'=>'T', 'T'=>'A', 'C'=>'G', 'G'=>'C']);
+// }
