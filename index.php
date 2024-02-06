@@ -90,3 +90,27 @@ function isSquare($n){
   // };
   // return false;
 }
+
+function disemvowel($string) {
+  $newString = '';
+  $letters = 'aeiouAEIOU';
+  for ($i=0; $i < strlen($string); $i++) {
+    $counter = 0;
+    for ($j=0; $j < 10; $j++) {
+      $counter += substr_count($string[$i], $letters[$j]);
+    }
+    if($counter == 0){
+      $newString .= $string[$i];
+    } 
+  }
+  return $newString;
+}
+// disemvowel("No offense but,\nYour writing is among the worst I've ever read");
+
+// function disemvowel($string) {
+  
+//   $string = str_ireplace(['a', 'e', 'i', 'o', 'u'], '', $string);
+  
+  
+//   return $string;
+// }
