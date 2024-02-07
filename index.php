@@ -114,3 +114,24 @@ function disemvowel($string) {
   
 //   return $string;
 // }
+
+function comp($a1, $a2) {
+  if($a1 == null || $a2 == null) return true;
+  foreach ($a1 as $i => $value1) {
+    $sqr = $value1**2;
+    $counter = 0;
+    foreach ($a2 as $j => $value2) {
+      if($value2 == $sqr){
+        $counter++ ;
+      }
+    }
+    if($counter == 0) return false;
+  }
+  return true;
+} 
+
+echo comp(
+  [],
+  []
+);
+
