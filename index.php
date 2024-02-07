@@ -130,8 +130,19 @@ function comp($a1, $a2) {
   return true;
 } 
 
-echo comp(
-  [],
-  []
-);
+// echo comp([],[]);
 
+function wave($people){
+  $arr = [];
+  for ($i=0; $i < strlen($people) ; $i++) { 
+    $people[$i] = strtoupper($people[$i]);
+    if ($people[$i] != ' '){
+      $arr[] = $people;
+    }
+    $people[$i] = strtolower($people[$i]);
+  }
+  // return $arr;
+  echo implode(" ",$arr);
+
+}
+wave('hello world');
