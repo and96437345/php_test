@@ -141,8 +141,62 @@ function wave($people){
     }
     $people[$i] = strtolower($people[$i]);
   }
-  // return $arr;
-  echo implode(" ",$arr);
+  return $arr;
+  // echo implode(" ",$arr);
 
 }
-wave('hello world');
+// wave('hello world');
+
+function getMiddle($text) {
+  $length = strlen($text);
+  $out = '';
+  if ($length % 2 == 0) {
+    $out = $text[$length / 2 - 1];
+    $out .= $text[$length / 2];
+  } else {
+    $out = $text[($length - 1) / 2];
+  }
+  return $out;
+}
+// echo getMiddle('an');
+
+function count_smileys($arr) {
+  $good = ')D';
+  $bad = 'o(>}]';
+  $count = 0;
+  foreach ($arr as $key => $string) {
+    $length = strlen($string);
+    $count_good = 0;
+    $count_bad = 0;
+    for ($i=0; $i < $length; $i++) {
+      for ($j=0; $j < 2; $j++) { 
+      $count_good += substr_count($good[$j], $string[$i]);
+      }
+    }
+    for ($i=0; $i < $length; $i++) {
+      for ($j=0; $j < 4; $j++) { 
+      $count_bad += substr_count($bad[$j], $string[$i]);
+      }
+    }
+    $count += $count_good > 0 && $count_bad == 0 ? 1 : 0;
+  }
+  return $count;
+}
+
+
+// echo count_smileys([]);
+
+function odd_or_even(array $a): string {
+  $sum = 0;
+  foreach ($a as $key => $value) {
+    $sum += $value;
+  }
+  $res = $sum % 2 == 0 ? 'even' : 'odd';
+  return $res;
+}
+// echo odd_or_even([1, 2, 3]);
+
+// function odd_or_even(array $a): string {
+//   return array_sum($a) % 2 ? 'odd' : 'even';
+// }
+
