@@ -200,3 +200,58 @@ function odd_or_even(array $a): string {
 //   return array_sum($a) % 2 ? 'odd' : 'even';
 // }
 
+function solution ($roman) {
+  $number = 0;
+  $arr = [];
+  for ($i=0; $i < strlen($roman); $i++) { 
+    if ($roman[$i] == 'M'){
+      $arr[] = 1000;
+    }
+    if ($roman[$i] == 'D'){
+      $arr[] = 500;
+    }
+    if ($roman[$i] == 'L'){
+      $arr[] = 50;
+    }
+    if ($roman[$i] == 'V'){
+      $arr[] = 5;
+    }
+    if ($roman[$i] == 'C' && $roman[$i+1] == 'M'){
+      $arr[] = 900;
+      $i++;
+    }
+    if ($roman[$i] == 'C' && $roman[$i+1] == 'D'){
+      $arr[] = 400;
+      $i++;
+    } elseif ($roman[$i] == 'C') {
+      $arr[] = 100;
+    }
+    if ($roman[$i] == 'X' && $roman[$i+1] == 'C'){
+      $arr[] = 90;
+      $i++;
+    }
+    if ($roman[$i] == 'X' && $roman[$i+1] == 'L'){
+      $arr[] = 40;
+      $i++;
+    } elseif ($roman[$i] == 'X') {
+      $arr[] = 10;
+    }
+    if ($roman[$i] == 'I' && $roman[$i+1] == 'X'){
+      $arr[] = 9;
+      $i++;
+    }
+    if ($roman[$i] == 'I' && $roman[$i+1] == 'V'){
+      $arr[] = 4;
+      $i++;
+    } elseif ($roman[$i] == 'I') {
+      $arr[] = 1;
+    }
+
+  }
+  $number = array_sum($arr);
+  
+  return $number;
+}
+
+echo solution("MDCLXVI");
+
