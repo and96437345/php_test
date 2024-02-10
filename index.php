@@ -356,4 +356,37 @@ function perimeter($n) {
   echo "$num ";
     return $perimeter;
 }
-echo perimeter(7); 
+// echo perimeter(7);
+
+function generateHashtag($str) {
+  if ($str[0] == '#') {
+    return false;
+  }
+   $hashString = '#';
+   $str = ucwords($str);
+   $repl_sp = str_replace(' ', '', $str);
+   if (strlen($repl_sp) > 140 || $str == '') return 0;
+   $repl_dot = str_replace('.', '', $repl_sp);
+   $hashString .= "$repl_dot";
+   if ($hashString == '#') return false;
+   return $hashString;
+}
+// echo generateHashtag(str_repeat(' ', 200));
+
+function findMissing($list) {
+  $step = 0;
+if (abs($list[1] - $list[0]) <= abs($list[2] - $list[1])) {
+  $step = $list[1] - $list[0];
+  if ($step == 0 || count($list) <= 2) return null;
+} else $step = $list[2] - $list[1];
+for ($i=1; $i < count($list); $i++) {
+  $dif = $list[$i-1] + $step;
+  if ($list[$i] != $dif) {
+    $list[0] = $dif;
+    return $list[0];
+  } 
+}
+return;
+}
+echo findMissing([-1, -3, -5, -9, -11]);
+
