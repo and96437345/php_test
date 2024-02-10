@@ -246,12 +246,114 @@ function solution ($roman) {
     } elseif ($roman[$i] == 'I') {
       $arr[] = 1;
     }
-
   }
   $number = array_sum($arr);
-  
   return $number;
 }
 
-echo solution("MDCLXVI");
+// echo solution("MDCLXVI");
+// function solution ($roman) {
 
+//   $number = 0;
+//   $roman_length = strlen($roman);
+  
+//   $arr = [
+//     'I' => 1,
+//     'V' => 5,
+//     'X' => 10,
+//     'L' => 50,
+//     'C' => 100,
+//     'D' => 500,
+//     'M' => 1000,
+//   ];
+  
+//   for ($i = 0; $i < $roman_length; $i++) {
+    
+//     if ($arr[$roman{$i}] < $arr[$roman{$i + 1}]) {
+//       $number -= $arr[$roman{$i}];
+//     } else {
+//       $number += $arr[$roman{$i}];
+//     }
+//   }
+  
+//   return $number;
+// }
+
+function moveZeros(array $items): array
+{
+    $newArr = [];
+    $count_zero = 0;
+    foreach ($items as $key => $value) {
+      if ($value === 0 || $value === 0.0){
+        $count_zero++;
+      } else {
+        $newArr[] = $value;
+      }
+    }
+    for ($i=0; $i < $count_zero; $i++) { 
+      $newArr[] = 0;
+    }
+    return $newArr;
+  }
+// moveZeros([9,0.0,0,9,1,2,0,1,0,1,0.0,3,0,1,9,0,0,0,0,9]);
+
+// function alphabet_position(string $s): string {
+  
+//   $number = 0;
+//   $string_length = strlen($string);
+  
+//   $arr = [
+//     'a' => 1,
+//     'b' => 5,
+//     'c' => 10,
+//     'd' => 50,
+//     'e' => 100,
+//     'f' => 500,
+//     'g' => 1000,
+//   ];
+  
+//   for ($i = 0; $i < $roman_length; $i++) {
+    
+//     if ($arr[$roman{$i}] < $arr[$roman{$i + 1}]) {
+//       $number -= $arr[$roman{$i}];
+//     } else {
+//       $number += $arr[$roman{$i}];
+//     }
+//   }
+  
+//   return $number;
+// }
+
+function alphabet_position(string $s): string {
+  $newString = '';
+  for ($i=0; $i < strlen($s); $i++) { 
+    $replace = find_pos($s[$i]);
+    $newString .= $replace;
+  }
+  return trim($newString);
+}
+function find_pos($letter) {
+  $string = 'abcdefghijklmnopqrstuvwxyz';
+  $letter = strtolower($letter);
+  $pos = strpos($string, $letter);
+  if ($pos === false) {
+    return;
+  } else {
+    $pos++;
+    return "$pos ";
+  }
+}
+// echo alphabet_position('The sunset sets at twelve o\' clock.');
+
+function perimeter($n) {
+
+  $perimeter = 0;
+  for ($i=1; $i <= $n+1; $i++) { 
+    $num = (int)((1.6180339887498948**$i - (1 - 1.6180339887498948)**$i )/sqrt(5));
+    // $num = (int)round(((1+sqrt(5)**$i)-(1-sqrt(5)**$i))/2**$i*sqrt(5));
+    $perimeter += $num * 4;
+  }
+  echo "$num ";
+    return $perimeter;
+}
+echo perimeter(7); 
