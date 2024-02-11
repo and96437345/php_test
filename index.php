@@ -401,5 +401,52 @@ function find_missing_letter(array $array): string {
   }
 }
 
-echo find_missing_letter(['A','B','D','E','F']);
+// echo find_missing_letter(['A','B','D','E','F']);
 
+function camel_case(string $s): string {
+  $s = ucwords($s);
+  $newString = str_replace(' ', '', $s);
+  return $newString;
+}
+
+// echo camel_case('camel case method');
+
+function beeramid($bonus, $price) {
+  $cost = 0;
+  $rows = 1;
+  $cans = 0;
+  while ($cost <= $bonus && $bonus > 0) {
+    $cansInRow = $rows ** 2;
+    $cans += $cansInRow;
+    if ($cans * $price > $bonus) {
+    $rows--;
+    return $rows;
+  }
+  $rows++; 
+  }
+  return 0;
+}
+
+// echo beeramid(0, 0);
+
+function alphanumeric(string $s) : bool {
+  $alphanum = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  $s = strtolower($s);
+  for ($i=0; $i < strlen($s); $i++) { 
+    if (strpos($alphanum, $s[$i]) === false) return false;
+  }
+  return true;
+}
+
+// echo alphanumeric('Hello world');
+
+function sum_strings($a, $b) {
+  $a = (int)$a;
+  $b = (int)$b;
+  $sum = (string)($a + $b);
+  echo "a = $a ";
+  echo "b = $b ";
+  return $sum;
+}
+
+echo sum_strings('9223372036854775807','9223372036854775807');
