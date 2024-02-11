@@ -388,5 +388,18 @@ for ($i=1; $i < count($list); $i++) {
 }
 return;
 }
-echo findMissing([-1, -3, -5, -9, -11]);
+// echo findMissing([-1, -3, -5, -9, -11]);
+
+function find_missing_letter(array $array): string {
+  for ($i=0; $i < count($array); $i++) {
+    $string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $position = strpos($string, $array[$i]);
+    if ($position + 1 != strpos($string, $array[$i+1])){
+      $find_pos = strpos($string, $array[$i+1]);
+      return $string[$find_pos - 1];
+    }
+  }
+}
+
+echo find_missing_letter(['A','B','D','E','F']);
 
