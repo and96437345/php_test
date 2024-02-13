@@ -449,4 +449,45 @@ function sum_strings($a, $b) {
   return $sum;
 }
 
-echo sum_strings('9223372036854775807','9223372036854775807');
+// echo sum_strings('9223372036854775807','9223372036854775807');
+
+function likes( $names ) {
+  $members = count($names);
+  $members_others = $members - 2;
+  $out = match ($members) {
+          0 => 'no one like this',
+          1 => "$names[0] likes this",
+          2 => "$names[0] and $names[1] likes this",
+          3 => "$names[0], $names[1] and $names[2] like this",
+          default => "$names[0], $names[1] and $members_others others like this"
+        };
+  echo $out;
+}
+
+// likes(["Alex", "Jacob", "Mark", "Max"]);
+
+class Person {
+  const species = 'Homo Sapiens';
+  public $name;
+  public $age;
+  public $occupation;
+  public function __construct($name, $age, $occupation){
+    $this->name = $name;
+    $this->age = $age;
+    $this->occupation = $occupation;
+  }
+  public function introduce() {
+    return "Hello, my name is $this->name";
+  }
+  public function describe_job() {
+    return "I am currently working as a(n) $this->occupation";
+  }
+  static function greet_extraterrestrials($species) {
+    return "Welcome to Planet Earth $species!";
+  }
+}
+
+// $humanoid = new Person('Humanoid','37','Wega');
+// print $humanoid->introduce();
+// print $humanoid->describe_job();
+// print $humanoid->greet_extraterrestrials('Martians');
