@@ -466,120 +466,168 @@ function likes( $names ) {
 
 // likes(["Alex", "Jacob", "Mark", "Max"]);
 
-// class Person {
-//   const species = 'Homo Sapiens';
-//   public $name;
-//   public $age;
-//   public $occupation;
-//   public function __construct($name, $age, $occupation){
-//     $this->name = $name;
-//     $this->age = $age;
-//     $this->occupation = $occupation;
-//   }
-//   public function introduce() {
-//     return "Hello, my name is $this->name";
-//   }
-//   public function describe_job() {
-//     return "I am currently working as a(n) $this->occupation";
-//   }
-//   static function greet_extraterrestrials($species) {
-//     return "Welcome to Planet Earth $species!";
-//   }
-// }
+class Person {
+  const species = 'Homo Sapiens';
+  public $name;
+  public $age;
+  public $occupation;
+  public function __construct($name, $age, $occupation){
+    $this->name = $name;
+    $this->age = $age;
+    $this->occupation = $occupation;
+  }
+  public function introduce() {
+    return "Hello, my name is $this->name";
+  }
+  public function describe_job() {
+    return "I am currently working as a(n) $this->occupation";
+  }
+  static function greet_extraterrestrials($species) {
+    return "Welcome to Planet Earth $species!";
+  }
+}
 
 // $humanoid = new Person('Humanoid','37','Wega');
 // print $humanoid->introduce();
 // print $humanoid->describe_job();
 // print $humanoid->greet_extraterrestrials('Martians');
 
-// class Salesman extends Person {
-//   public function __construct($name, $age) {
-//     $this->name = $name;
-//     $this->age = $age;
-//     $this->occupation = 'Salesman';
-//   }
-//   public function introduce() {
-//     return "Hello, my name is $this->name, don't forget to check out my products!";
-//   }
-// }
-// class ComputerProgrammer extends Person {  
-//   public function __construct($name, $age) {
-//     $this->name = $name;
-//     $this->age = $age;
-//     $this->occupation = 'Computer Programmer';
-//   }
-//   public function describe_job() {
-//     return "I am currently working as a(n) $this->occupation, don't forget to check out my Codewars account ;)";
-//   }
-// }
-// class WebDeveloper extends ComputerProgrammer {
-//   public function __construct($name, $age) {
-//     $this->name = $name;
-//     $this->age = $age;
-//     $this->occupation = 'Web Developer';
-//   }
-//   public function describe_job() {
-//     return parent::describe_job()." And don't forget to check on my website :D";
-//   }
-//   public function describe_website () {
-//     return "My professional world-class website is made from HTML, CSS, Javascript and PHP!";
-//   }
-// }
+class Salesman extends Person {
+  public function __construct($name, $age) {
+    $this->name = $name;
+    $this->age = $age;
+    $this->occupation = 'Salesman';
+  }
+  public function introduce() {
+    return "Hello, my name is $this->name, don't forget to check out my products!";
+  }
+}
+class ComputerProgrammer extends Person {  
+  public function __construct($name, $age) {
+    $this->name = $name;
+    $this->age = $age;
+    $this->occupation = 'Computer Programmer';
+  }
+  public function describe_job() {
+    return "I am currently working as a(n) $this->occupation, don't forget to check out my Codewars account ;)";
+  }
+}
+class WebDeveloper extends ComputerProgrammer {
+  public function __construct($name, $age) {
+    $this->name = $name;
+    $this->age = $age;
+    $this->occupation = 'Web Developer';
+  }
+  public function describe_job() {
+    return parent::describe_job()." And don't forget to check on my website :D";
+  }
+  public function describe_website () {
+    return "My professional world-class website is made from HTML, CSS, Javascript and PHP!";
+  }
+}
 // $obj = new WebDeveloper('Stiven','40');
 // echo $obj->describe_job();
 
-// class Salesman extends Person {
-//   public function __construct($name, $age) {
-//     parent::__construct($name, $age, "Salesman");
-//   }
-//   public function introduce() {
-//     return parent::introduce() . ", don't forget to check out my products!";
-//   }
-// }
-// class ComputerProgrammer extends Person {
-//   public function __construct($name, $age) {
-//     parent::__construct($name, $age, "Computer Programmer");
-//   }
-//   public function describe_job() {
-//     return parent::describe_job() . ", don't forget to check out my Codewars account ;)";
-//   }
-// }
-// class WebDeveloper extends ComputerProgrammer {
-//   public function __construct($name, $age) {
-//     parent::__construct($name, $age);
-//     $this->occupation = "Web Developer";
-//   }
-//   public function describe_job() {
-//     return parent::describe_job() . " And don't forget to check on my website :D";
-//   }
-//   public function describe_website() {
-//     return "My professional world-class website is made from HTML, CSS, Javascript and PHP!";
-//   }
-// }
-
-class Person {
-  protected string $name;
-  protected int $age;
-  protected string $occupation;
+class PersonNew {
+  protected $name;
+  protected $age;
+  protected $occupation;
   public function __construct($name, $age, $occupation){
-    $this->name = $name;
-    $this->age = $age;
-    $this->occupation = $occupation;
+    if (!is_string($name)) {
+      throw new InvalidArgumentException('Name must be a string!');
+    } else {
+      $this->name = $name;
+    }
+    if (!is_int($age) || $age < 0) {
+      throw new InvalidArgumentException('Age must be a non-negative integer!');
+    } else {
+      $this->age = $age;
+    }
+    if (!is_string($occupation)) {
+      throw new InvalidArgumentException('Occupation must be a string!');
+    } else {
+      $this->occupation = $occupation;
+    }
   }
   public function set_name($name) {
-    $this->name = $name;
+    if (!is_string($name)) {
+      throw new InvalidArgumentException('Name must be a string!');
+    } else {
+      $this->name = $name;
+    }
   }
   public function set_age($age) {
-    $this->age = $age;
+    if (!is_int($age) || $age < 0) {
+      throw new InvalidArgumentException('Age must be a non-negative integer!');
+    } else {
+      $this->age = $age;
+    }
   }
   public function set_occupation($occupation) {
-    $this->occupation = $occupation;
+    if (!is_string($occupation)) {
+      throw new InvalidArgumentException('Occupation must be a string!');
+    } else {
+      $this->occupation = $occupation;
+    }
   }
   public function get_name() {
-    echo $this->name;
+    return $this->name;
+  }
+  public function get_age() {
+    return $this->age;
+  }
+  public function get_occupation() {
+    return $this->occupation;
   }
 }
 
-$obj = new Person('Stiven', '32', 'Programmer');
-$obj->set_name('Sigal');
-$obj->get_name();
+// $obj = new PersonNew('Stiven', 32, 'Programmer');
+// $obj->set_name(true);
+// echo $obj->get_name();
+
+// class Person1 {
+  
+//   protected $name;
+//   protected $age;
+//   protected $occupation;
+  
+//   public function __construct($name, $age, $occupation) {
+//       $this->set_name($name);
+//       $this->set_age($age);
+//       $this->set_occupation($occupation);
+//   }
+  
+//   public function get_name() {
+//       return $this->name;
+//   }
+  
+//   public function get_age() {
+//       return $this->age;
+//   }
+  
+//   public function get_occupation() {
+//       return $this->occupation;
+//   }
+  
+//   public function set_name($name) {
+//       if (!is_string($name)) {
+//           throw new InvalidArgumentException('Name must be a string!');
+//       }
+//       $this->name = $name;
+//   }
+  
+//   public function set_age($age) {
+//       if (!is_integer($age) || $age < 0) {
+//           throw new InvalidArgumentException('Age must be a non-negative integer!');
+//       }
+//       $this->age = $age;
+//   }
+  
+//   public function set_occupation($occupation) {
+//       if (!is_string($occupation)) {
+//           throw new InvalidArgumentException('Occupation must be a string!');
+//       }
+//       $this->occupation = $occupation;
+//   }
+
+// }
