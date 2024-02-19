@@ -868,6 +868,19 @@ function likes( $names ) {
 // };
 
 function number2words(int $n): string {
+  if ($n >= 1000) {
+    $n_low = $n % 1000;
+    $n_hi = ($n - $n_low) / 1000;
+    if ($n_low == 0) {
+      return number_word($n_hi).' thousand';
+    }
+    return number_word($n_hi).' thousand '.number_word($n_low);
+  } else {
+    return number_word($n);
+  }
+  
+}
+function number_word($n) {
   $res = 'zero';
   $array_num = [
     0 => 'zero',
@@ -933,5 +946,6 @@ function number2words(int $n): string {
   return $res;
 }
 
-$a = readline('Введите чсло: ');
+$a = readline('Введите число: ');
 echo number2words($a);
+
