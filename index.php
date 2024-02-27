@@ -878,8 +878,8 @@ function number2words(int $n): string {
   } else {
     return number_word($n);
   }
-  
 }
+
 function number_word($n) {
   $res = 'zero';
   $array_num = [
